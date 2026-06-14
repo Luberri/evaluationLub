@@ -2,10 +2,10 @@ import axios from "axios"
 import { ref } from "vue"
 export const API_URL2 = '/api/api.php'
 export const API_URL1 = '/api/apirest.php'
-export const CLIENT_ID = 'ee5c8cd42bd76d7c5b30bd109778ddf74570be9d170d648698fce6ebd2a334d7'
-export const CLIENT_SECRET = 'ac0bd30800d5d70e4dc4550bee27478d3855f9177d5eb9bfdd529d53c5d93c82'
-export const APP_TOKEN = 'iLOGHNjPONSSyENvFQ37tdQ8S2UOJdkZbU7J5khv'
-export const USER_TOKEN = 'pD8XqSNjJXgMHdiAELWUGOuqY2U6zkJ6MNxs2Zv8'
+export const CLIENT_ID = '00d391be927d0a3e7d5c49b6894063e9a2fe48bd1254a94ea3e130e6643b320f'
+export const CLIENT_SECRET = '3e0ece61af297d2d56637789228a2ce386ad2c4d8768aacc7faba32089f19c2b'
+export const APP_TOKEN = 'qAY61fbMKVZzx0l6cLM3UntXpeezuwzIxuvx3zdp'
+export const USER_TOKEN = 'NRgsFoGGku9EvrObynJDa7NznBsIrCHh2ya1fOWT'
 export const SESSION_TOKEN = ref(localStorage.getItem("session_token"))
 export const ACCESS_TOKEN = ref(localStorage.getItem("access_token"))
 

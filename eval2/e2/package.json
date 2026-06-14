@@ -10,12 +10,16 @@
   },
   "dependencies": {
     "@tabler/icons-webfont": "^3.44.0",
+    "axios": "^1.17.0",
+    "bootstrap": "^5.3.8",
     "form-data": "^4.0.5",
     "jszip": "^3.10.1",
     "node-fetch": "^3.3.2",
     "papaparse": "^5.5.3",
     "sharp": "^0.35.1",
     "vue": "^3.5.34",
+    "vue-final-modal": "^4.5.5",
+    "vue-router": "^5.1.0",
     "vuedraggable": "^4.1.0"
   },
   "devDependencies": {

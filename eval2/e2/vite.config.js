@@ -7,10 +7,10 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "http://glpi.test",
+        target: "http://localhost",
         changeOrigin: true,
         secure: false,
-        rewrite: (path) => path.replace(/^\/api/, "")
+        rewrite: (path) => path.replace(/^\/api/, "/GLPI/glpi/public")
       }
     }
   }
