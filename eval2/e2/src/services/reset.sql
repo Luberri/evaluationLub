@@ -1,9 +1,8 @@
-TRUNCATE TABLE glpi_items_tickets;
-TRUNCATE TABLE glpi_documents_items;
-TRUNCATE TABLE glpi_documents;
-TRUNCATE TABLE glpi_ticketcosts;
-TRUNCATE TABLE glpi_monitors;
-TRUNCATE TABLE glpi_phones;
-TRUNCATE TABLE glpi_tickets;
-DELETE FROM glpi_users WHERE id > 8
-x
+DELETE from glpi_items_tickets;
+DELETE from glpi_documents_items;
+DELETE from glpi_documents;
+DELETE from glpi_ticketcosts;
+DELETE from glpi_monitors;
+DELETE from glpi_phones;
+DELETE from glpi_tickets;
+DELETE FROM glpi_users WHERE id > 8;

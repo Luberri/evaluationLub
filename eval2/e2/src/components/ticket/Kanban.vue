@@ -3,13 +3,14 @@ import { onMounted,computed, ref, watch } from 'vue';
 import { getAllTicket, getTicketTeamMember, updateTicket } from '../../services/ticket';
 import { useRouter } from 'vue-router';
 import draggable from 'vuedraggable'
-import { deleteCoutLast, getAllStatusSpring } from '../../services/spring';
+import { deleteCoutSpring, getAllCoutLastSpring, getAllStatusSpring } from '../../services/spring';
 import { VueFinalModal } from 'vue-final-modal'
 import TicketTeamMemberCreate from './TicketTeamMemberCreate.vue'
 import TicketTeamMemberList from './TicketTeamMemberList.vue';
 import TicketSolutionCreate from './TicketSolutionCreate.vue';
 import TicketCreate from './TicketCreate.vue';
 import Cout from '../spring/Cout.vue';
+import Reouv from '../spring/Reouv.vue';
 
 
 
@@ -28,6 +29,7 @@ const pendingStatusId = ref(null)
 const showAddUser = ref(false)
 const showAddSolution = ref(false)
 const showDetail = ref(false)
+const showRetour = ref(false)
 
 
 onMounted(async () => {
@@ -59,6 +61,19 @@ async function validateAddUser() {
         )
     })
 }
+async function deleteCout(ticketId) {
+    const all = (await getAllCoutLastSpring(ticketId)).data
+    const couts = all.filter(p => p.motif == "cout")
+
+    if (!couts.length) {
+        alert("tsisy")
+        return
+    }
+
+    for (const c of couts) {  // séquentiel au lieu de Promise.all
+        await deleteCoutSpring(c.id)
+    }
+}
 async function validateAddSolution() {
     await updateTicket(
         pendingTicketId.value,
@@ -85,7 +100,7 @@ async function change(e, statusId) {
     const ticket = e.added.element
 
     const teams = (await getTicketTeamMember(ticket.id)).data
-    if (statusId == 2) {
+    if (statusId == 900000) {
         const b1 = teams.find(t => t.role == 'assigned')
         const b2 = teams.find(t => t.role == 'requester')
         
@@ -99,8 +114,13 @@ async function change(e, statusId) {
         pendingTicketId.value = ticket.id
         pendingStatusId.value = statusId
         ticketId.value = ticket.id
+        
         showAddSolution.value = true
     } else {
+        pendingTicketId.value = ticket.id
+        pendingStatusId.value = statusId
+        ticketId.value = ticket.id
+        showRetour.value = true
         await updateTicket(ticket.id, { status: statusId })
     }
 }
@@ -150,6 +170,17 @@ async function retour(id) {
                 </div>
             </div>
         </VueFinalModal>
+
+        <VueFinalModal v-model="showRetour">
+            <div class="modal d-block" tabindex="-1">
+                <div class="modal-dialog" style="max-width: 90vw;">
+                    <div class="modal-content">
+                        <Reouv :ticketId="ticketId"/>
+                        <button style="max-width: 200px;" class="btn btn-danger" @click="deleteCout(ticketId)">effacer derniers coust</button>
+                    </div>
+                </div>
+            </div>
+        </VueFinalModal>
         
         <div class="row g-3 justify-content-center">
             <div v-for="id in ids" :key="id.id" class="col-md-3 m-3 p-3" :style="{borderRadius: '20px',boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)',backgroundColor: listeStatus.find(s => s.idGlpi == id.id)?.couleur}">
@@ -162,7 +193,7 @@ async function retour(id) {
                 >
                     <template #item="{ element }">
                         <div class="form-control m-2" style="cursor: grab;" @click="openDetail(element.id)">
-                            {{ element.name }}
+                            {{ element.name }} ({{ element.id }})
                             <!-- {{ element.statusSpring }} -->
                         </div>
                     </template>

@@ -29,6 +29,7 @@ import Status from './components/spring/Status.vue'
 import TicketCostCreate from './components/ticket/TicketCostCreate.vue'
 import TicketSolutionCreate from './components/ticket/TicketSolutionCreate.vue'
 import Cout from './components/spring/Cout.vue'
+import Alea1 from './components/spring/Alea1.vue'
 
 const routes = [
   {
@@ -150,7 +151,12 @@ const routes = [
   {
     path: '/bo/spring/cout',
     component: Cout,
-  }
+  },
+  {
+    path: '/bo/alea1',
+    component: Alea1,
+  },
+  
 ]
 const router = createRouter({
   history: createWebHistory(),
