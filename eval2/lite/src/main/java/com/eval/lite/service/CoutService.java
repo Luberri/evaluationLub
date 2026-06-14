@@ -3,6 +3,8 @@ package com.eval.lite.service;
 import com.eval.lite.model.Cout;
 import com.eval.lite.repository.CoutRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -41,5 +43,8 @@ public class CoutService {
             return true;
         }
         return false;
+    }
+    public List<Cout> lastCouts(Long id) {
+        return coutRepository.lastCouts(id);
     }
 }
