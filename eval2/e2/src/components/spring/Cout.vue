@@ -23,11 +23,10 @@ async function createCout() {
     let f = 0
     if (s[0]) {
         f = s[s.length-1].groupe
-        
     }
     await Promise.all(
         a.data.items.map(async (y) => {
-            await createCoutSpring({idTicket:formData.value.idTicket,groupe:(f+1),coutSuper:formData.value.coutSuper/a.data.items.length,itemType:y.itemtype})
+            await createCoutSpring({idTicket:formData.value.idTicket,groupe:(f+1),coutSuper:formData.value.coutSuper/a.data.items.length,itemType:y.itemtype,motif:"cout"})
         })
     )
     await loadCout()

@@ -20,6 +20,9 @@ export function deleteStatusSpring(id) {
 export function getAllCoutSpring(params = {}) {
     return get(`${API_SPRING}/cout`, params)
 }
+export function getAllCoutLastSpring(idTicket,params = {}) {
+    return get(`${API_SPRING}/cout/lasts/${idTicket}`, params)
+}
 export function getCoutSpring(id, params = {}) {
     return get(`${API_SPRING}/cout/${id}`, params)
 }
@@ -32,19 +35,19 @@ export function updateCoutSpring(id, data) {
 export function deleteCoutSpring(id) {
     return del(`${API_SPRING}/cout/${id}`)
 }
-export async function deleteCoutLast(idTicket) {
-    const a = await getAllCoutSpring()
-    await Promise.all(
-        a.data.map(async (y) => {
-            if (idTicket == y.idTicket) {
-                await deleteCoutSpring(y.id)
-            }
-        })
-    )
-}
-export async function CoutLast(idTicket) {
-    const a = await getAllCoutSpring()
-    const res = a.data.filter(poo=>poo.id == idTicket)
-    console.log("resss ")
-    return res
-}
+// export async function deleteCoutLast(idTicket) {
+//     const a = await getAllCoutSpring()
+//     await Promise.all(
+//         a.data.map(async (y) => {
+//             if (idTicket == y.idTicket) {
+//                 await deleteCoutSpring(y.id)
+//             }
+//         })
+//     )
+// }
+// export async function CoutLast(idTicket) {
+//     const a = await getAllCoutSpring()
+//     const res = a.data.filter(poo=>poo.id == idTicket)
+//     console.log("resss ")
+//     return res
+// }

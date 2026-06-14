@@ -18,6 +18,10 @@ public class CoutController {
     public List<Cout> getAllCout() {
         return coutService.getAllCout();
     }
+    @GetMapping("/lasts/{id}")
+    public List<Cout> getLasts(@PathVariable Long id) {
+        return coutService.lastCouts(id);
+    }
 
     @GetMapping("/{id}")
     public Cout getCoutById(@PathVariable Long id) {
