@@ -3,6 +3,7 @@ import { onMounted, ref } from 'vue';
 import { getAllCoutSpring } from '../../services/spring';
 import { getAllCosts, getAllTicket } from '../../services/ticket';
 import { listItems } from '../../services/item';
+import { formatNumber } from '../../util';
 
 const rs = ref([])
 onMounted(async () => {
@@ -104,10 +105,10 @@ onMounted(async () => {
         <tbody>
             <tr v-for="r in rs">
                 <td>{{ r.itemType }}</td>
-                <td>{{ r.coutGlpi }}</td>
-                <td>{{ r.coutSuper }}</td>
-                <td>{{ r.coutReouv }}</td>
-                <td>{{ r.coutTotal }}</td>
+                <td>{{ formatNumber(r.coutGlpi)}}</td>
+                <td>{{ formatNumber(r.coutSuper) }}</td>
+                <td>{{ formatNumber(r.coutReouv) }}</td>
+                <td>{{ formatNumber(r.coutTotal) }}</td>
             </tr>
         </tbody>
     </table>
