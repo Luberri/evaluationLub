@@ -150,3 +150,9 @@ export function getSession() {
 export function getAccessToken() {
     return localStorage.getItem("access_token")
 }
+export function formatNumber(valeur , min = 2, max = 2) {
+    return Number(valeur || 0).toLocaleString("fr-FR", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    });
+}
