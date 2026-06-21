@@ -1,5 +1,4 @@
 package com.eval.lite.model;
-
 import jakarta.persistence.*;
 
 @Entity

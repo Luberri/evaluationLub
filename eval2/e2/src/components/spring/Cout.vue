@@ -2,6 +2,7 @@
 import { onMounted, ref } from 'vue';
 import { getAllCoutSpring, createCoutSpring, deleteCoutSpring, updateCoutSpring } from '../../services/spring';
 import { getTicket, TICKET_STATUS } from '../../services/ticket';
+import { traiter } from '../../services/ImportAlea';
 
 
 const props = defineProps({
@@ -17,18 +18,7 @@ const formData = ref({
     coutSuper: 0,
 })
 async function createCout() {
-    const a = await getTicket(props.ticketId ?? 1000)
-    // const yyyy = 0
-    const s = (await getAllCoutSpring()).data
-    let f = 0
-    if (s[0]) {
-        f = s[s.length-1].groupe
-    }
-    await Promise.all(
-        a.data.items.map(async (y) => {
-            await createCoutSpring({idTicket:formData.value.idTicket,groupe:(f+1),coutSuper:formData.value.coutSuper/a.data.items.length,itemType:y.itemtype,motif:"cout"})
-        })
-    )
+    await traiter(props.ticketId, "close", formData.value.coutSuper)
     await loadCout()
 }
 async function loadCout() {
@@ -37,7 +27,7 @@ async function loadCout() {
 }
 onMounted(async () => {
     
-    formData.value.idTicket = props.ticketId ?? 10000
+    formData.value.idTicket = props.ticketId
     console.log('lwlwllwwv ',formData.value.idTicket)
     await loadCout()
 })

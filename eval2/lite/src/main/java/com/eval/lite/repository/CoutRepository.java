@@ -11,6 +11,15 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CoutRepository extends JpaRepository<Cout, Long> {
-    @Query(value = "select * from cout where id_ticket_glip=:ticketId and groupe=(select MAX(groupe) from cout where id_ticket_glip=:ticketId)",nativeQuery = true)
+    @Query(value = "select * from cout where id_ticket_glip=:ticketId and groupe=(select MAX(groupe) from cout where id_ticket_glip=:ticketId) and motif='cout'",nativeQuery = true)
     public List<Cout> lastCouts(@Param("ticketId") Long ticketId);
+
+    @Query(value = "select * from cout where id_ticket_glip=:ticketId and groupe=(select MIN(groupe) from cout where id_ticket_glip=:ticketId) and motif='cout'",nativeQuery = true)
+    public List<Cout> firstCouts(@Param("ticketId") Long ticketId);
+
+    @Query(value = "select * from cout where item_type=?1",nativeQuery = true)
+    public List<Cout> detail(@Param("item") String item);
+
+    @Query(value = "select * from cout where id_ticket_glip=:ticketId and motif='cout'", nativeQuery = true)
+    public List<Cout> allCoutsByTicket(@Param("ticketId") Long ticketId);
 }

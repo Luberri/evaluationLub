@@ -11,6 +11,7 @@ import TicketSolutionCreate from './TicketSolutionCreate.vue';
 import TicketCreate from './TicketCreate.vue';
 import Cout from '../spring/Cout.vue';
 import Reouv from '../spring/Reouv.vue';
+import { traiter } from '../../services/ImportAlea.js';
 
 
 
@@ -62,17 +63,7 @@ async function validateAddUser() {
     })
 }
 async function deleteCout(ticketId) {
-    const all = (await getAllCoutLastSpring(ticketId)).data
-    const couts = all.filter(p => p.motif == "cout")
-
-    if (!couts.length) {
-        alert("tsisy")
-        return
-    }
-
-    for (const c of couts) {  // séquentiel au lieu de Promise.all
-        await deleteCoutSpring(c.id)
-    }
+    await traiter(ticketId, "cancel")
 }
 async function validateAddSolution() {
     await updateTicket(
@@ -130,7 +121,7 @@ async function openDetail(id) {
 }
 async function retour(id) {
     retrog.value =false
-    await deleteCoutLast(id)
+    await deleteCout(id)
 }
 </script>
 
@@ -154,7 +145,7 @@ async function retour(id) {
                 <div class="modal-dialog" style="max-width: 90vw;">
                     <div class="modal-content">
                         <TicketCreate :ticketId="ticketId"/>
-                        <button class="btn btn-success" @click="showDetail = false">ok</button>
+                        <button class="btn btn-success  col-md-2" @click="showDetail = false">ok</button>
                     </div>
                 </div>
             </div>
@@ -165,7 +156,7 @@ async function retour(id) {
                 <div class="modal-dialog" style="max-width: 90vw;">
                     <div class="modal-content">
                         <Cout :ticketId="ticketId"/>
-                        <button class="btn btn-success" @click="validateAddSolution">ok</button>
+                        <button class="btn btn-success  col-md-2" @click="validateAddSolution">ok</button>
                     </div>
                 </div>
             </div>

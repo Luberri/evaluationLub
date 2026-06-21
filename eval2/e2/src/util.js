@@ -151,7 +151,7 @@ export function getSession() {
 export function getAccessToken() {
     return localStorage.getItem("access_token")
 }
-export function formatNumber(valeur , min = 2, max = 2) {
+export function formatNumber(valeur , min = 4, max = 4) {
     return Number(valeur || 0).toLocaleString("fr-FR", {
         minimumFractionDigits: 2,
         maximumFractionDigits: 2

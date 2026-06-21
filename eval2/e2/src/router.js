@@ -30,6 +30,7 @@ import TicketCostCreate from './components/ticket/TicketCostCreate.vue'
 import TicketSolutionCreate from './components/ticket/TicketSolutionCreate.vue'
 import Cout from './components/spring/Cout.vue'
 import Alea1 from './components/spring/Alea1.vue'
+import ImportAlea from './components/ImportAlea.vue'
 
 const routes = [
   {
@@ -155,6 +156,10 @@ const routes = [
   {
     path: '/bo/alea1',
     component: Alea1,
+  },
+  {
+    path: '/import/alea1',
+    component: ImportAlea,
   },
   
 ]

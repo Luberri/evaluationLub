@@ -44,7 +44,20 @@ public class CoutService {
         }
         return false;
     }
+    public void deleteAllCout() {
+        coutRepository.deleteAll();
+    }
     public List<Cout> lastCouts(Long id) {
         return coutRepository.lastCouts(id);
     }
+    public List<Cout> firstCouts(Long id) {
+        return coutRepository.firstCouts(id);
+    }
+    public List<Cout> detail(String item) {
+        return coutRepository.detail(item);
+    }
+    // Service
+public List<Cout> allCoutsByTicket(Long id) {
+    return coutRepository.allCoutsByTicket(id);
+}
 }

@@ -8,7 +8,7 @@ import {
     getAllItemModels,
     getAllItemTypes
 } from "./dropDown.js";
-
+import { deleteAllCoutSpring } from "./spring.js";
 async function safeDelete(path, name, report, category) {
     try {
         await del(path, { Authorization: `Bearer ${getAccessToken()}` });
@@ -21,6 +21,7 @@ async function safeDelete(path, name, report, category) {
 }
 
 export async function resetAll() {
+
     const report = {
         tickets: 0,
         assets: 0,
@@ -34,6 +35,8 @@ export async function resetAll() {
     };
 
     try {
+        console.log("Deleting cout spring...");
+        await deleteAllCoutSpring();
         // ── 1. Tickets ─────────────────────────────────────────
         console.log("Deleting tickets...");
         const ticketsRes = await getAllTicket();
