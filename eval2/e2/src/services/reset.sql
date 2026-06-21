@@ -4,5 +4,5 @@ DELETE from glpi_documents;
 DELETE from glpi_ticketcosts;
 DELETE from glpi_monitors;
 DELETE from glpi_phones;
-DELETE from glpi_tickets;
+TRUNCATE glpi_tickets;
 DELETE FROM glpi_users WHERE id > 8;

@@ -245,15 +245,12 @@ export async function importTicketsCSV(csvText, importedAssets = []) {
         throw new Error(`Colonnes manquantes : ${missing.join(', ')}`)
     }
 
-    const BATCH_SIZE = 5
     const results = []
 
-    for (let i = 0; i < parsed.data.length; i += BATCH_SIZE) {
-        const batch = parsed.data.slice(i, i + BATCH_SIZE)
-        const batchResults = await Promise.all(
-            batch.map((row, batchIdx) => processRow(row, assetMap, i + batchIdx))
-        )
-        results.push(...batchResults)
+    // Remplace le bloc for + Promise.all par :
+    for (let i = 0; i < parsed.data.length; i++) {
+        const result = await processRow(parsed.data[i], assetMap, i)
+        results.push(result)
     }
 
     return results

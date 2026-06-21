@@ -8,3 +8,20 @@ boite de diag : bouton annulation->fanana ny cout super farany
 cout reouverture : mameno %ge cout farany->10
 
 soit annule/soit reouverture
+--------------------------------------------
+page import : csv 3 colonnes : 
+ticket, mvt,valeur
+2,open(reouverture),5
+2,cancel(annuler),
+2,close(terminer),100
+
+clique categorie : Alea1 (detail ligne categorie ray Alea1.vue)
+
+
+--------------
+
+mode de calcul %ge: mode 1 : cout farany , mode 2 cout voalohany, 
+mode 3 cout moyenne hatramizay ,mode 4 somme cout rehetra
+asiana zone de liste 1,2,3,4
+
+import colonne 'mode' : reouverture ihany

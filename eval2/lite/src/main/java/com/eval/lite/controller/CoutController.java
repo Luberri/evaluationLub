@@ -22,13 +22,24 @@ public class CoutController {
     public List<Cout> getLasts(@PathVariable Long id) {
         return coutService.lastCouts(id);
     }
-
+    @GetMapping("/firsts/{id}")
+    public List<Cout> getFirst(@PathVariable Long id) {
+        return coutService.firstCouts(id);
+    }
+    @GetMapping("/detail/{item}")
+    public List<Cout> getDetail(@PathVariable String item) {
+        return coutService.detail(item);
+    }
     @GetMapping("/{id}")
     public Cout getCoutById(@PathVariable Long id) {
         return coutService.getCoutById(id)
                 .orElseThrow();
     }
-
+// Controller
+@GetMapping("/all/{id}")
+public List<Cout> getAllByTicket(@PathVariable Long id) {
+    return coutService.allCoutsByTicket(id);
+}
     @PostMapping
     // @ResponseCout(HttpCout.CREATED)
     public Cout createCout(@RequestBody Cout Cout) {
@@ -53,6 +64,11 @@ public class CoutController {
             // throw new CoutNotFoundException(id);
         }
 
+        return ResponseEntity.noContent().build();
+    }
+    @DeleteMapping
+    public ResponseEntity<Void> deleteAllCout() {
+        coutService.deleteAllCout();
         return ResponseEntity.noContent().build();
     }
 }

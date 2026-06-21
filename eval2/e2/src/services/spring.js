@@ -23,6 +23,9 @@ export function getAllCoutSpring(params = {}) {
 export function getAllCoutLastSpring(idTicket,params = {}) {
     return get(`${API_SPRING}/cout/lasts/${idTicket}`, params)
 }
+export function getAllCoutFirstSpring(idTicket,params = {}) {
+    return get(`${API_SPRING}/cout/firsts/${idTicket}`, params)
+}
 export function getCoutSpring(id, params = {}) {
     return get(`${API_SPRING}/cout/${id}`, params)
 }
@@ -34,6 +37,20 @@ export function updateCoutSpring(id, data) {
 }
 export function deleteCoutSpring(id) {
     return del(`${API_SPRING}/cout/${id}`)
+}
+export function detailSpring(item) {
+    return get(`${API_SPRING}/cout/detail/${item}`)
+}
+export function deleteAllCoutSpring() {
+    return del(`${API_SPRING}/cout`)
+}
+// // spring.js
+// export function getAllCoutByTicketSpring(idTicket, params = {}) {
+//     return get(`${API_SPRING}/cout/all/${idTicket}`, params)
+// }
+// spring.js
+export function getAllCoutByTicketSpring(idTicket, params = {}) {
+    return get(`${API_SPRING}/cout/all/${idTicket}`, params)
 }
 // export async function deleteCoutLast(idTicket) {
 //     const a = await getAllCoutSpring()

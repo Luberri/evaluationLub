@@ -19,7 +19,7 @@ export const TICKET_IMPACT = {
   4: "Élevé",
   5: "Critique"
 };
-
+//test pro max effectue
 export const TICKET_URGENCY = TICKET_IMPACT
 export const TICKET_PRIORITY = TICKET_IMPACT
 

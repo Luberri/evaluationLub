@@ -63,6 +63,7 @@ const navGroups = [
     label: "Imports",
     items: [
       { label: "Import General", icon: "ti-file-import", path: "/bo/import" },
+      { label: "Import Alea", icon: "ti-file-import", path: "/import/alea1/" },
       { label: "Import1", icon: "ti-file-import", path: "/bo/import1" },
       { label: "Import2", icon: "ti-file-import", path: "/bo/import2" },
     ],

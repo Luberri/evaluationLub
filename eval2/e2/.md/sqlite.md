@@ -28,3 +28,8 @@ AND c.groupe = (
 )
 """)
 List<Cout> findLatestGroup(@Param("ticketId") Long ticketId);
+
+-------------------------------------------
+Get-ChildItem D:\evaluationLub\eval2 -Recurse -File | Where-Object {$_.LastWriteTime -gt (Get-Date).AddMinutes(-90)} |
+Sort-Object LastWriteTime -Descending |
+Select-Object LastWriteTime, FullName
