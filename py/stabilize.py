@@ -40,7 +40,7 @@ def push_github():
         )
         print(resultat_push.stdout)
         if resultat_push.returncode == 0:
-            print("✅ Push effectué avec succès !")
+            print("✅ P.")
         else:
             print(f"❌ Erreur push : {resultat_push.stderr.strip()}")
 
@@ -54,7 +54,7 @@ def push_github():
 
 def pull_github():
     """Fait un git fetch origin puis git pull sur le dépôt configuré."""
-    print("\n📥 Lancement du fetch/pull...")
+    print("\n📥")
 
     if not os.path.isdir(os.path.join(REPO_PATH, ".git")):
         print(f"❌ Aucun dépôt git trouvé dans : {REPO_PATH}")
@@ -71,7 +71,7 @@ def pull_github():
             print(f"❌ Erreur fetch : {resultat_fetch.stderr.strip()}")
             return
         else:
-            print("✅ Fetch origin terminé.")
+            print("✅ F.")
 
         # git pull
         resultat_pull = subprocess.run(
@@ -80,7 +80,7 @@ def pull_github():
         )
         print(resultat_pull.stdout)
         if resultat_pull.returncode == 0:
-            print("✅ Pull effectué avec succès !")
+            print("✅ P.")
         else:
             print(f"❌ Erreur pull : {resultat_pull.stderr.strip()}")
 
@@ -94,12 +94,12 @@ def pull_github():
 
 def main():
     print("=" * 55)
-    print("🎧 Listener actif !")
-    print(f"📁 Dépôt surveillé : {REPO_PATH}")
-    print("Ctrl+→+0      → Git add / commit / push")
-    print("Ctrl+→+9      → Git fetch origin / pull")
-    print("Ctrl+Shift+Q  → Quitter")
-    print("=" * 55)
+    # print("🎧 Listener actif !")
+    # print(f"📁 Dépôt surveillé : {REPO_PATH}")
+    # print("Ctrl+→+0      → Git add / commit / push")
+    # print("Ctrl+→+9      → Git fetch origin / pull")
+    # print("Ctrl+Shift+Q  → Quitter")
+    # print("=" * 55)
 
     keyboard.add_hotkey('ctrl+right+0', push_github)
     keyboard.add_hotkey('ctrl+right+9', pull_github)
