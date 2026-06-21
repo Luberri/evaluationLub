@@ -267,14 +267,6 @@ onMounted(async () => {
         return acc
     }, {})
 
-    // items sans tickets
-    for (const eee of itemsType) {
-        const key = eee.itemtype
-        if (!parItemType[key]) {
-            parItemType[key] = { itemType: key, coutGlpi: 0, coutSuper: 0, coutReouv: 0, coutTotal: 0 }
-        }
-    }
-
     rs.value = Object.values(parItemType)
 })
 </script>
