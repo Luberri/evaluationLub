@@ -16,7 +16,7 @@ REPO_PATH = r"D:\evaluationLub"
 
 def push_github():
     """Fait un git add/commit/push sur le dépôt configuré."""
-    print("\n📦 Lancement du commit/push...")
+    print("\n📦")
 
     if not os.path.isdir(os.path.join(REPO_PATH, ".git")):
         print(f"❌ Aucun dépôt git trouvé dans : {REPO_PATH}")
