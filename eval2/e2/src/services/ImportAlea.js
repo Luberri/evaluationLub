@@ -214,6 +214,7 @@ async function createReouv(id, formData, mode = 1) {
 
     let calcul = 0
     const f = lasts[0].groupe
+    //test
 
     if (mode == 1 || mode == 2) {
         calcul = lasts[0].coutSuper * formData.pourc / 100
