@@ -15,6 +15,19 @@ async function ModifierCout(c) {
     const formData = { coutSuper:c.coutSuper }
     await updateCout(c.id,formData)
 }
+async function Sup(c) {
+    // const formData = { idTicket:c.idTicket,  }
+    
+    await updateCoutSpring(c.id,
+    { 
+        idTicket: c.idTicket, 
+        groupe: c.groupe, 
+        coutSuper: 0, 
+        itemType: null,  
+        motif: c.motif 
+    }
+    )
+}
 </script>
 <template>
     <h1>reouverture et cout</h1>
@@ -41,9 +54,11 @@ async function ModifierCout(c) {
                         <input type="number" v-model="c.pourc">%
                         <input type="number" v-model="c.mode">Mode
                         <button class="btn btn-primary" @click="Modifier(c)">Modifier</button>
+                        <!-- <button class="btn btn-danger" @click="Sup(c)">sup</button> -->
                     </td>
                     <td v-else>
                         <button class="btn btn-primary" @click="ModifierCout(c)">Modifier cout</button>
+                        <!-- <button class="btn btn-danger" @click="Sup(c)">sup</button> -->
                     </td>
                 <!-- </form> -->
             </tr>
