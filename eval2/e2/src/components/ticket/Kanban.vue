@@ -105,7 +105,7 @@ async function change(e, statusId) {
         pendingTicketId.value = ticket.id
         pendingStatusId.value = statusId
         ticketId.value = ticket.id
-        
+        //
         showAddSolution.value = true
     } else {
         pendingTicketId.value = ticket.id
