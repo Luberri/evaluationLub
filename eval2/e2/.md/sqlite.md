@@ -41,4 +41,4 @@ select sum(cout_super/2)+(select sum(cout_super) from cout where id_ticket_glip=
 
 pour ticket 1 : 1 computer(misy cout glpi)
 
-select sum(cout_super/2)+(select sum(couT_super) from cout where id_ticket_glip=1)+160.45, count(*) from cout where id_ticket_glip=2;
+select sum(cout_super/2)+(select sum(couT_super) from cout where id_ticket_glip=1)+160.45 from cout where id_ticket_glip=2;
