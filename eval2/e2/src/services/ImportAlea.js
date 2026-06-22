@@ -71,6 +71,7 @@ async function createReouv(id, formData, mode = 1) {
     })
 }
 export async function updateReouv(idCout,id, formData, mode = 1) {
+    console.log("callllme",idCout,id)
     let lasts
     if (mode == 1) {
         lasts = (await getAllCoutLastSpringM(id,idCout)).data.filter(a => a.motif == "cout")
@@ -94,7 +95,7 @@ export async function updateReouv(idCout,id, formData, mode = 1) {
         calcul = somme(lasts) * formData.pourc / 100
     }
 
-    await updateCoutSpring({
+    await updateCoutSpring(idCout,{
         idTicket: formData.idTicket,
         groupe: f,
         coutSuper: calcul,
@@ -102,6 +103,7 @@ export async function updateReouv(idCout,id, formData, mode = 1) {
         motif: "reouv",
         mode : mode,
         pourc : formData.pourc,
+        idCout : null
     })
 }
 async function createCout(id, formData) {
