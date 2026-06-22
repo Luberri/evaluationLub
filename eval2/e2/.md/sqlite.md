@@ -33,3 +33,12 @@ List<Cout> findLatestGroup(@Param("ticketId") Long ticketId);
 Get-ChildItem D:\evaluationLub\eval2 -Recurse -File | Where-Object {$_.LastWriteTime -gt (Get-Date).AddMinutes(-90)} |
 Sort-Object LastWriteTime -Descending |
 Select-Object LastWriteTime, FullName
+
+------------------------------------------
+pour ticket 2 : 1 computer,1 Monitor
+
+select sum(cout_super/2)+(select sum(cout_super) from cout where id_ticket_glip=1)+160.45 from cout where id_ticket_glip=2;
+
+pour ticket 1 : 1 computer(misy cout glpi)
+
+select sum(cout_super/2)+(select sum(couT_super) from cout where id_ticket_glip=1)+160.45, count(*) from cout where id_ticket_glip=2;
