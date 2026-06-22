@@ -1,24 +1,52 @@
 <script setup>
 import { onMounted, ref } from 'vue';
-import { getAllCoutSpring } from '../../services/spring';
+import { getAllCoutSpring, updateCoutSpring } from '../../services/spring';
 
 const all = ref([])
 onMounted(async () => {
-    all.value = (await getAllCoutSpring)
+    all.value = (await getAllCoutSpring()).data
 })
+async function Modifier(c) {
+    
+    await updateCoutSpring(c.id,    
+    {
+        "idTicket": c.idTicket,
+        "coutSuper": c.coutSuper,
+        "motif": c.motif,
+        "itemType": null,
+        "groupe": c.groupe
+    })
+}
 </script>
 <template>
     <h1>reouverture et cout</h1>
-    <table>
+    <table class="table table-striped">
         <thead>
             <tr>
+                <th>id</th>
                 <th>cout_super</th>
                 <th>id_ticket_glip</th>
                 <th>motif</th>
+                <th>action</th>
             </tr>
         </thead>
         <tbody>
-
+            <tr v-for="c in all">
+                <!-- <form @submit.prevent="handleModif"> -->
+                    <td>{{ c.id }}</td>
+                    <td>
+                        <input type="number" v-model="c.coutSuper">
+                    </td>
+                    <td>{{ c.idTicket }}</td>
+                    <td>{{ c.motif }}</td>
+                    <td v-if="c.motif == 'reouv'">
+                        <input type="number" v-model="c.coutSuper">%
+                    </td>
+                    <td>
+                         <button class="btn btn-primary" @click="Modifier(c)">Modifier</button>
+                    </td>
+                <!-- </form> -->
+            </tr>
         </tbody>
     </table>
 </template>
