@@ -1,1 +1,1 @@
-python generate.py Zavatra
+python generate.py Z
