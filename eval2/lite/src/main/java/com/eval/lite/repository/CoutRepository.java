@@ -32,4 +32,8 @@ public interface CoutRepository extends JpaRepository<Cout, Long> {
 
     @Query(value = "select * from cout where id_ticket_glip=:ticketId and motif='cout' and id <:id", nativeQuery = true)
     public List<Cout> allCoutsByTicketModif(@Param("ticketId") Long ticketId,@Param("id") Long id);
+
+    
+    // @Query(value = "select * from cout where id_ticket_glip=:ticketId and motif='cout' and id <:id", nativeQuery = true)
+    // public List<Cout> allCoutsByTicketModif(@Param("ticketId") Long ticketId,@Param("id") Long id);
 }

@@ -1,7 +1,7 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import { getAllCoutSpring, updateCoutSpring } from '../../services/spring';
-import { parseNumber, updateReouv } from '../../services/ImportAlea';
+import { parseNumber, updateCout, updateReouv } from '../../services/ImportAlea';
 
 const all = ref([])
 onMounted(async () => {
@@ -10,6 +10,10 @@ onMounted(async () => {
 async function Modifier(c) {
     const formData = { idTicket: c.idTicket, pourc: parseNumber(c.pourc) }
     await updateReouv(c.id, c.idTicket,formData,c.mode)
+}
+async function ModifierCout(c) {
+    const formData = { coutSuper:c.coutSuper }
+    await updateCout(c.id,formData)
 }
 </script>
 <template>
@@ -36,9 +40,10 @@ async function Modifier(c) {
                     <td v-if="c.motif == 'reouv'">
                         <input type="number" v-model="c.pourc">%
                         <input type="number" v-model="c.mode">Mode
+                        <button class="btn btn-primary" @click="Modifier(c)">Modifier</button>
                     </td>
-                    <td>
-                         <button class="btn btn-primary" @click="Modifier(c)">Modifier</button>
+                    <td v-else>
+                        <button class="btn btn-primary" @click="ModifierCout(c)">Modifier cout</button>
                     </td>
                 <!-- </form> -->
             </tr>

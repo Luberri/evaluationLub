@@ -1,5 +1,5 @@
 import Papa from 'papaparse'
-import { createCoutSpring, deleteCoutSpring, getAllCoutByTicketSpring, getAllCoutByTicketSpringM, getAllCoutFirstSpring, getAllCoutFirstSpringM, getAllCoutLastSpring, getAllCoutLastSpringM, getAllCoutSpring, updateCoutSpring } from './spring'
+import { createCoutSpring, deleteCoutSpring, getAllCoutByTicketSpring, getAllCoutByTicketSpringM, getAllCoutFirstSpring, getAllCoutFirstSpringM, getAllCoutLastSpring, getAllCoutLastSpringM, getAllCoutSpring, getCoutSpring, updateCoutSpring } from './spring'
 import { getTicket } from './ticket'
 
 export async function traiter(ticket, mvt, valeur = 0, mode = 1) {
@@ -70,7 +70,7 @@ async function createReouv(id, formData, mode = 1) {
         pourc : formData.pourc,
     })
 }
-export async function updateReouv(idCout,id, formData, mode = 1) {
+export async function   updateReouv(idCout,id, formData, mode = 1) {
     console.log("callllme",idCout,id)
     let lasts
     if (mode == 1) {
@@ -117,9 +117,26 @@ async function createCout(id, formData) {
         idTicket: formData.idTicket, 
         groupe: (f + 1), 
         coutSuper: formData.coutSuper, 
-        itemType: null,   // ou "ticket" selon ton modèle
+        itemType: null,  
         motif: "cout" 
     })
+}
+export async function updateCout(idCout, formData) {
+    const now = (await getCoutSpring(idCout)).data
+    await updateCoutSpring(idCout,{ 
+        idTicket: now.idTicket, 
+        groupe: now.groupe,
+        coutSuper: formData.coutSuper, 
+        itemType: null,  
+        motif: "cout" 
+    })
+    const coutReouv = (await getAllCoutSpring()).data.filter(a=>a.idTicket == now.idTicket && a.motif == 'reouv' && a.id > idCout)
+    console.log("update ",coutReouv)
+    for (const c of coutReouv) {
+        console.log("miditra : ",c)
+        const formData = { idTicket: c.idTicket, pourc: parseNumber(c.pourc) }
+        await updateReouv(idCout,now.idTicket,formData,c.mode)
+    }
 }
 
 async function deleteCout(ticketId) {
