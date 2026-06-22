@@ -35,10 +35,13 @@ Sort-Object LastWriteTime -Descending |
 Select-Object LastWriteTime, FullName
 
 ------------------------------------------
-pour ticket 2 : 1 computer,1 Monitor
+computer : ticket 1 et 2
 
-select sum(cout_super/2)+(select sum(cout_super) from cout where id_ticket_glip=1)+160.45 from cout where id_ticket_glip=2;
+select sum(cout_super/2)+
+(select sum(cout_super) from cout where id_ticket_glip=1)
++160.45 
+from cout where id_ticket_glip=2;
 
-pour ticket 1 : 1 computer(misy cout glpi)
+monieor : ticket 2
 
-select sum(cout_super/2)+(select sum(couT_super) from cout where id_ticket_glip=1)+160.45 from cout where id_ticket_glip=2;
+select sum(cout_super/2) from cout where id_ticket_glip=2;

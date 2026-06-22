@@ -86,9 +86,7 @@ onMounted(async () => {
     }, {})
 
     rs.value = Object.values(parItemType)
-    for (const element of rs.value) {
-        totalMax.value+=element.coutTotal
-    }
+    totalMax.value = rs.value.reduce((s, e) => s + (e.coutTotal || 0), 0)
 })
 </script>
 
