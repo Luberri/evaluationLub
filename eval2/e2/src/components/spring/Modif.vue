@@ -1,14 +1,15 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import { getAllCoutSpring, updateCoutSpring } from '../../services/spring';
+import { parseNumber, updateReouv } from '../../services/ImportAlea';
 
 const all = ref([])
 onMounted(async () => {
     all.value = (await getAllCoutSpring()).data
 })
 async function Modifier(c) {
-    const formData = { idTicket: ticket, pourc: parseNumber(valeur) },mode
-    
+    const formData = { idTicket: c.idTicket, pourc: parseNumber(c.pourc) }
+    await updateReouv(c.id, c.idTicket,formData,c.mode)
 }
 </script>
 <template>

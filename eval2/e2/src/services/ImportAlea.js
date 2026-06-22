@@ -70,7 +70,7 @@ async function createReouv(id, formData, mode = 1) {
         pourc : formData.pourc,
     })
 }
-async function updateReouv(idCout,id, formData, mode = 1) {
+export async function updateReouv(idCout,id, formData, mode = 1) {
     let lasts
     if (mode == 1) {
         lasts = (await getAllCoutLastSpringM(id,idCout)).data.filter(a => a.motif == "cout")
@@ -135,7 +135,7 @@ async function deleteCout(ticketId) {
     }
 }
 
-function parseNumber(value) {
+export function parseNumber(value) {
     if (value == null || value === '') return null
     const sanitized = String(value).trim().replace(',', '.')
     const num = Number(sanitized)
