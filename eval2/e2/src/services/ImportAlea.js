@@ -135,7 +135,7 @@ export async function updateCout(idCout, formData) {
     for (const c of coutReouv) {
         console.log("miditra : ",c)
         const formData = { idTicket: c.idTicket, pourc: parseNumber(c.pourc) }
-        await updateReouv(idCout,now.idTicket,formData,c.mode)
+        await updateReouv(c.id,now.idTicket,formData,c.mode)
     }
 }
 
