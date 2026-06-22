@@ -27,6 +27,6 @@ asiana zone de liste 1,2,3,4
 import colonne 'mode' : reouverture ihany
 
 -------------------
-page vaovao liste reouverture rehetra natao
+page vaovao liste reouverture/super(Modif) cost rehetra natao
 boutton modifier reouverture->miova valeur sy mode -> recalcule
 boutton supprimer (avec logique)
