@@ -116,7 +116,7 @@ onMounted(async () => {
             <th></th>
             <th></th>
             <th></th>
-            <th>{{formatNumber(totalMax,3,3) }}</th></tr>
+            <th>{{formatNumber(totalMax,3,3) }} </th></tr>
         </tbody>
     </table>
 
