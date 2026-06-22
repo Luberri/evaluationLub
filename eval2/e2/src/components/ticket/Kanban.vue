@@ -32,7 +32,6 @@ const showAddSolution = ref(false)
 const showDetail = ref(false)
 const showRetour = ref(false)
 
-
 // test
 onMounted(async () => {
     all.value = (await getAllTicket()).data
