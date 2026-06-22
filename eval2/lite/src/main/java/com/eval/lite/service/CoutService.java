@@ -3,8 +3,6 @@ package com.eval.lite.service;
 import com.eval.lite.model.Cout;
 import com.eval.lite.repository.CoutRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -33,6 +31,11 @@ public class CoutService {
             cout.setIdTicket(coutDetails.getIdTicket());
             cout.setCoutSuper(coutDetails.getCoutSuper());
             cout.setItemType(coutDetails.getItemType());
+            cout.setGroupe(coutDetails.getGroupe());
+            cout.setMotif(coutDetails.getMotif());
+            cout.setIdCout(coutDetails.getIdCout());
+            cout.setMode(coutDetails.getMode());
+            cout.setPourc(coutDetails.getPourc());
             return coutRepository.save(cout);
         });
     }
@@ -59,5 +62,17 @@ public class CoutService {
     // Service
 public List<Cout> allCoutsByTicket(Long id) {
     return coutRepository.allCoutsByTicket(id);
+}
+
+    public List<Cout> lastCoutsModif(Long id,Long idCout) {
+        return coutRepository.lastCoutsModif(id,idCout);
+    }
+    public List<Cout> firstCoutsModif(Long id,Long idCout) {
+        return coutRepository.firstCoutsModif(id,idCout);
+    }
+
+    // Service
+public List<Cout> allCoutsByTicketModif(Long id,Long idCout) {
+    return coutRepository.allCoutsByTicketModif(id,idCout);
 }
 }

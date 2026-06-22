@@ -1,5 +1,5 @@
 import Papa from 'papaparse'
-import { createCoutSpring, deleteCoutSpring, getAllCoutByTicketSpring, getAllCoutFirstSpring, getAllCoutLastSpring, getAllCoutSpring } from './spring'
+import { createCoutSpring, deleteCoutSpring, getAllCoutByTicketSpring, getAllCoutByTicketSpringM, getAllCoutFirstSpring, getAllCoutFirstSpringM, getAllCoutLastSpring, getAllCoutLastSpringM, getAllCoutSpring, updateCoutSpring } from './spring'
 import { getTicket } from './ticket'
 
 export async function traiter(ticket, mvt, valeur = 0, mode = 1) {
@@ -65,7 +65,43 @@ async function createReouv(id, formData, mode = 1) {
         groupe: f,
         coutSuper: calcul,
         itemType: null,
-        motif: "reouv"
+        motif: "reouv",
+        mode : mode,
+        pourc : formData.pourc,
+    })
+}
+async function updateReouv(idCout,id, formData, mode = 1) {
+    let lasts
+    if (mode == 1) {
+        lasts = (await getAllCoutLastSpringM(id,idCout)).data.filter(a => a.motif == "cout")
+    } else if (mode == 2) {
+        lasts = (await getAllCoutFirstSpringM(id,idCout)).data.filter(a => a.motif == "cout")
+    } else if (mode == 3 || mode == 4) {
+        lasts = (await getAllCoutByTicketSpringM(id,idCout)).data
+    }
+
+    if (!lasts[0]) return
+
+    let calcul = 0
+    const f = lasts[0].groupe
+    //test
+
+    if (mode == 1 || mode == 2) {
+        calcul = lasts[0].coutSuper * formData.pourc / 100
+    } else if (mode == 3) {
+        calcul = moyenne(lasts) * formData.pourc / 100
+    } else if (mode == 4) {
+        calcul = somme(lasts) * formData.pourc / 100
+    }
+
+    await updateCoutSpring({
+        idTicket: formData.idTicket,
+        groupe: f,
+        coutSuper: calcul,
+        itemType: null,
+        motif: "reouv",
+        mode : mode,
+        pourc : formData.pourc,
     })
 }
 async function createCout(id, formData) {

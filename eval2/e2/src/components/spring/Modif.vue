@@ -7,15 +7,8 @@ onMounted(async () => {
     all.value = (await getAllCoutSpring()).data
 })
 async function Modifier(c) {
+    const formData = { idTicket: ticket, pourc: parseNumber(valeur) },mode
     
-    await updateCoutSpring(c.id,    
-    {
-        "idTicket": c.idTicket,
-        "coutSuper": c.coutSuper,
-        "motif": c.motif,
-        "itemType": null,
-        "groupe": c.groupe
-    })
 }
 </script>
 <template>
@@ -40,7 +33,8 @@ async function Modifier(c) {
                     <td>{{ c.idTicket }}</td>
                     <td>{{ c.motif }}</td>
                     <td v-if="c.motif == 'reouv'">
-                        <input type="number" v-model="c.coutSuper">%
+                        <input type="number" v-model="c.pourc">%
+                        <input type="number" v-model="c.mode">Mode
                     </td>
                     <td>
                          <button class="btn btn-primary" @click="Modifier(c)">Modifier</button>

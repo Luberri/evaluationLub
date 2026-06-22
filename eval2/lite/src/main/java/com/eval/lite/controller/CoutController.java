@@ -35,6 +35,19 @@ public class CoutController {
         return coutService.getCoutById(id)
                 .orElseThrow();
     }
+
+    @GetMapping("/lastsModif/{id}/{idCout}")
+    public List<Cout> getLastsM(@PathVariable Long id,@PathVariable Long idCout) {
+        return coutService.lastCoutsModif(id,idCout);
+    }
+    @GetMapping("/firstsModif/{id}/{idCout}")
+    public List<Cout> getFirstm(@PathVariable Long id,@PathVariable Long idCout) {
+        return coutService.firstCoutsModif(id,idCout);
+    }
+    @GetMapping("/allModif/{id}/{idCout}")
+public List<Cout> getAllByTicketModif(@PathVariable Long id,@PathVariable Long idCout) {
+    return coutService.allCoutsByTicketModif(id,idCout);
+}
 // Controller
 @GetMapping("/all/{id}")
 public List<Cout> getAllByTicket(@PathVariable Long id) {
