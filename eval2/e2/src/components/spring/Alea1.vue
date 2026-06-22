@@ -12,6 +12,7 @@ const showDetail = ref(false)
 const detailRows = ref([])
 const avecCost = ref([])
 const totalDetail = ref(0)
+const totalMax = ref(0)
 
 function getCoutGlpi(coutGlpi) {
     let total = 0
@@ -85,6 +86,9 @@ onMounted(async () => {
     }, {})
 
     rs.value = Object.values(parItemType)
+    for (const element of rs.value) {
+        totalMax.value+=element.coutTotal
+    }
 })
 </script>
 
@@ -112,7 +116,7 @@ onMounted(async () => {
             <th></th>
             <th></th>
             <th></th>
-            <th>{{ totalAll }}</th></tr>
+            <th>{{formatNumber(totalMax,3,3) }}</th></tr>
         </tbody>
     </table>
 
