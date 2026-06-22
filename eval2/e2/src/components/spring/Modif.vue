@@ -4,16 +4,21 @@ import { getAllCoutSpring, updateCoutSpring } from '../../services/spring';
 import { parseNumber, updateCout, updateReouv } from '../../services/ImportAlea';
 
 const all = ref([])
+async function load() {
+    all.value = (await getAllCoutSpring()).data
+}
 onMounted(async () => {
     all.value = (await getAllCoutSpring()).data
 })
 async function Modifier(c) {
     const formData = { idTicket: c.idTicket, pourc: parseNumber(c.pourc) }
     await updateReouv(c.id, c.idTicket,formData,c.mode)
+    load()
 }
 async function ModifierCout(c) {
     const formData = { coutSuper:c.coutSuper }
     await updateCout(c.id,formData)
+    load()
 }
 async function Sup(c) {
     // const formData = { idTicket:c.idTicket,  }
