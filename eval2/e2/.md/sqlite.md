@@ -14,7 +14,7 @@ cd C:\laragon\bin\mysql\mysql-8.4.3-winx64\bin
 -------------------puissance--------------------
 cd D:\evaluationLub\eval2\e2
 
-powershell -ExecutionPolicy Bypass -File .\priorise.ps1
+powershell -ExecutionPolicy Bypass -File D:\evaluationLub\eval2\e2\priorise.ps1
 
 
 -----------------java sql-----------------------

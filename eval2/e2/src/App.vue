@@ -27,6 +27,7 @@ const navGroups = [
       { label: "Dashboard", icon: "ti-layout-dashboard", path: "/bo/dashboard" },
       { label: "Reset all", icon: "ti ti-refresh", path: "/bo/reset" },
       { label: "Gesion Kanban", icon: "ti-layout-kanban", path: "/bo/spring/status" },
+      { label: "Detail Glpi+Detail Super", icon: "ti-file-description", path: "/bo/alea1" }
     ],
   },
   {

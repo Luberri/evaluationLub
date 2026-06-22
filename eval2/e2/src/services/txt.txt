@@ -25,3 +25,5 @@ mode 3 cout moyenne hatramizay ,mode 4 somme cout rehetra
 asiana zone de liste 1,2,3,4
 
 import colonne 'mode' : reouverture ihany
+
+-------------------
