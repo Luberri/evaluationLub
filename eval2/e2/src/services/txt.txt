@@ -28,6 +28,6 @@ import colonne 'mode' : reouverture ihany
 
 -------------------
 page vaovao liste reouverture/super(Modif) cost rehetra natao
-boutton modifier reouverture->miova valeur sy mode -> recalcule
+boutton modifier reouverture->miova valeur sy mode -> recalcule tout
 boutton supprimer (avec logique)
 TSY ASINA SUPP

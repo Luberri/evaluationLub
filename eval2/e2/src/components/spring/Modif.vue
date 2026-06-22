@@ -11,9 +11,14 @@ onMounted(async () => {
     <h1>reouverture et cout</h1>
     <table>
         <thead>
-            <th></th>
-            <th></th>
-            <th></th>
+            <tr>
+                <th>cout_super</th>
+                <th>id_ticket_glip</th>
+                <th>motif</th>
+            </tr>
         </thead>
+        <tbody>
+
+        </tbody>
     </table>
 </template>
