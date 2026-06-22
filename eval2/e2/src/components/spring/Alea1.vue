@@ -205,7 +205,6 @@ async function aff(r) {
     totalDetail.value = 0
     detailRows.value = []
 
-    // Tickets qui ont cet itemType
     const ticketsConcernes = avecCost.value.filter(t =>
         t.items.some(i => i.itemtype === r.itemType)
     )

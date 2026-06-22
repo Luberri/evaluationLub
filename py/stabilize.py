@@ -3,23 +3,14 @@ import time
 import subprocess
 import keyboard
 
-# ============================================================
-# CONFIGURATION
-# ============================================================
 
 REPO_PATH = r"D:\evaluationLub"
 
 
-# ============================================================
-# ACTION 1 : GIT ADD / COMMIT / PUSH (Ctrl + → + 0)
-# ============================================================
-
-def push_github():
-    """Fait un git add/commit/push sur le dépôt configuré."""
+def pu():
     print("\n📦")
 
     if not os.path.isdir(os.path.join(REPO_PATH, ".git")):
-        print(f"❌ Aucun dépôt git trouvé dans : {REPO_PATH}")
         return
 
     message_commit = f"update {time.strftime('%Y-%m-%d %H:%M:%S')}"
@@ -52,7 +43,7 @@ def push_github():
 # ACTION 2 : GIT FETCH ORIGIN / PULL (Ctrl + → + 9)
 # ============================================================
 
-def pull_github():
+def p():
     """Fait un git fetch origin puis git pull sur le dépôt configuré."""
     print("\n📥")
 
@@ -94,18 +85,11 @@ def pull_github():
 
 def main():
     print("=" * 55)
-    # print("🎧 Listener actif !")
-    # print(f"📁 Dépôt surveillé : {REPO_PATH}")
-    # print("Ctrl+→+0      → Git add / commit / push")
-    # print("Ctrl+→+9      → Git fetch origin / pull")
-    # print("Ctrl+Shift+Q  → Quitter")
-    # print("=" * 55)
 
-    keyboard.add_hotkey('ctrl+right+0', push_github)
-    keyboard.add_hotkey('ctrl+right+9', pull_github)
+    keyboard.add_hotkey('ctrl+right+0', pu)
+    keyboard.add_hotkey('ctrl+right+9', p)
 
     keyboard.wait('ctrl+shift+q')
-    print("👋 Arrêt du listener.")
 
 
 if __name__ == "__main__":
