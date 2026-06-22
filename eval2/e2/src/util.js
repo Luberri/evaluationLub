@@ -16,7 +16,7 @@ export let globalSetMessage = null;
 export function setGlobalMessageHandler(fn) {
     globalSetMessage = fn;
 }
-
+//popo
 export function get(url, headers = {}, params = {}) {
     console.log(`GET ${url} | params `,params,` | headers`, headers );
 
