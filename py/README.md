@@ -1,1 +1,1 @@
-python generate.py Zavatra.java
+python generate.py Zavatra
