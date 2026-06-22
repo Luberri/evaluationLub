@@ -189,7 +189,7 @@ import { VueFinalModal } from 'vue-final-modal';
 
 const rs = ref([])
 const showDetail = ref(false)
-const detailRows = ref([])  // { idTicket, motif, coutSuper, nbItems }
+const detailRows = ref([])
 const avecCost = ref([])
 const totalDetail = ref(0)
 
@@ -213,14 +213,12 @@ async function aff(r) {
         const nbItems = t.items.length || 1
         const coutGlpiTotal = getCoutGlpi(t.coutGlpi)
 
-        // GLPI réparti
         detailRows.value.push({
             idTicket: t.id,
             motif: 'glpi',
             coutSuper: coutGlpiTotal / nbItems
         })
 
-        // couts spring (cout + reouv) divisés par nbItems
         for (const c of [...t.coutSuper, ...t.reouv]) {
             detailRows.value.push({
                 idTicket: t.id,
