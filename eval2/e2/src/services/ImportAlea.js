@@ -70,7 +70,7 @@ async function createReouv(id, formData, mode = 1) {
         pourc : formData.pourc,
     })
 }
-export async function   updateReouv(idCout,id, formData, mode = 1) {
+export async function updateReouv(idCout,id, formData, mode = 1) {
     console.log("callllme",idCout,id)
     let lasts
     if (mode == 1) {
